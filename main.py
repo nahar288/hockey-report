@@ -20,3 +20,20 @@ for i in range(1, 6):
         win_pct = r.find("td", class_="pct")
         goals_for = r.find("td", class_="gf")
         goals_against = r.find("td", class_="ga")
+
+        all_data.append({
+            "team": team.get_text(strip=True) if team else "",
+            "year": year.get_text(strip=True) if year else "",
+            "wins": wins.get_text(strip=True) if wins else "",
+            "losses": losses.get_text(strip=True) if losses else "",
+            "ot_losses": ot_losses.get_text(strip=True) if ot_losses else "",
+            "win_pct": win_pct.get_text(strip=True) if win_pct else "",
+            "goals_for": goals_for.get_text(strip=True) if goals_for else "",
+            "goals_against": goals_against.get_text(strip=True) if goals_against else "",
+        })
+
+
+df = pd.DataFrame(all_data)
+df.to_csv('hockey.csv', index=False)
+print(df)
+
