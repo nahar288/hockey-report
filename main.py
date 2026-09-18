@@ -33,7 +33,7 @@ for i in range(1, 6):
         })
 
 
-df = pd.DataFrame(all_data)
+df = pd.DataFrame(hockey_table)
 df.to_csv('hockey.csv', index=False)
 print(df)
 
